@@ -1,0 +1,303 @@
+/* global */
+:root {
+    --font-color: #2b2b2b;
+    --background-color: #fafafa;
+    --accent-color: #7e6741;
+    --accent-color-two: #bbbbbb;
+}
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+    color: var(--font-color);
+    background-color: var(--background-color);
+    font-family: 'Roboto Mono', 'Montserrat', 'Verdana', sans-serif;
+}
+
+.nav-bar {
+    grid-row: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: auto;
+    z-index: 1000;
+    position: fixed;
+    padding-top: 10px;
+    width: calc( 100% - 40px );
+    margin: 0px 20px;
+    padding: 10px 0;
+    background-color: var(--background-color);
+}
+
+main {
+    padding: 50px 20px;
+}
+
+h1 {
+    font-size: 1.7rem;
+    font-weight: 400;
+    background-color: var(--background-color);
+}
+
+h2 {
+    font-size: 3.2rem;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 1.7rem;
+    font-weight: 400;
+}
+
+h4 {
+    font-size: 1.7rem;
+    margin-top: 50px;
+}
+
+h5 {
+    font-size: 1.7rem;
+    font-weight: 400;
+}
+
+a {
+    font-size: 1.7rem;
+    font-weight: 400;
+    text-decoration: none;
+    color: var(--font-color);
+}
+
+p {
+    font-size: 1.7rem;
+}
+
+h1:hover, a:hover, a.active {
+    cursor: pointer;
+    color: var(--accent-color-two);
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.contact {
+    display: flex;
+    gap: 15px;
+}
+
+/* hamburger menu */
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+/* home section */
+
+.home {
+    width: 100%;
+    height: 87vh;
+}
+
+.screensaver-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.screensaver-text {
+    display: inline-block;
+    filter: blur(5px);
+    transition: filter 0.1s ease;
+}
+
+.screensaver-text:hover {
+    filter: blur(0px);
+    cursor: default;
+}
+
+/* ATM section */
+
+.atm-video-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    overflow-x: hidden;
+    margin-top: 15px;
+}
+
+.atm-awards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    gap: 20px;
+}
+
+.festival-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    text-align: center;
+}
+
+.festival-list h5 {
+    padding: 0 15px;
+}
+
+.atm-video-container .video {
+    width: calc(100% - 20vw);
+    background-color: black;
+    margin: 10px 0;
+}
+
+/* gallery section */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    overflow: auto;
+  }
+  
+.gallery-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 3/4;
+    cursor: pointer;
+    overflow: hidden;
+    transition: filter 0.2s ease;
+}
+
+.gallery-item:hover {
+    filter: blur(20px);
+}
+
+
+.gallery-item video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: hsla(0, 0%, 100%, 0.95);
+    z-index: 3000;
+    cursor: pointer;
+}
+
+.modal video {
+    object-fit: contain;
+    height: 90vh;
+    width: 90vw;
+}
+
+.close {
+    position: absolute;
+    right: 5rem;
+    top: 3rem;
+    font-size: 2.4rem;
+    cursor: pointer;
+    z-index: 3000;
+}
+
+
+/* Mobile styles */
+@media (max-width: 994px) {
+    .nav-links {
+        display: none;
+    }
+
+    .contact {
+        display: none;
+    }
+
+    .atm-video-container {
+        height: 100%;
+        margin-bottom: 20px;
+        align-items: start;
+    }
+
+    .festival-list {
+        text-align: left;
+        justify-content: left; 
+        text-align: left;
+    }
+
+    .video, .atm-video-container .video {
+        width: 100%;
+        margin: 50px 0;
+    }
+
+    .festival-list h5 {
+        padding: 0px;
+    }
+
+    /* hamburger section */
+    .hamburger {
+        display: block;
+        position: fixed;
+        right: 20px;
+        top: 10px;
+        font-size: 2rem;
+        z-index: 2000;
+    }
+
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        left: 0;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100vh;
+        z-index: 1000;
+        background-color: var(--background-color);
+    }
+
+    .nav-links a {
+        font-size: 2rem;
+    }
+    
+    .contact.active {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        align-items: left;
+        width: 100%;
+        height: auto;
+        z-index: 1000;
+    }
+}
+
+/* for bigger screen */
+@media(min-width: 1260px) {
+    .gallery {
+        grid-template-columns: repeat(5, 1fr)
+    }
+}

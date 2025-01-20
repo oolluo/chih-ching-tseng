@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio of Chih-Ching Tseng - Animator, Illustrator, and Game Developer.">
+    <meta name="author" content="Chih-Ching Tseng">
+    <title>chih-ching tseng</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="nav-bar" role="navigation">
+        <div class="logo">
+            <h1 onclick="loadContent('home.html', 'home-btn')" >曾智旌 chih-ching tseng</h1>
+        </div>
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+        <div class="nav-links">
+            <a onclick="loadContent('home.html', 'home-btn'), toggleMenu()" id="home-btn" class="active">home</a>
+            <a onclick="loadContent('atm.html', 'atm-btn'), toggleMenu()" id="atm-btn">atm(film)</a>
+            <a onclick="loadContent('animations.html', 'animations-btn'), toggleMenu()" id="animations-btn">animations</a>
+        </div>
+        <div class="contact">
+            <a href="https://www.instagram.com/oolluo/" target="_blank" rel="noopener noreferrer">@oolluo</a>
+            <p>email: 
+                <a href="mailto:oolluo.t@gmail.com">oolluo.t@gmail.com</a>
+            </p>
+        </div>
+    </nav>
+    <main id="content"></main>
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <video id="modal-video" autoplay loop></video>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
