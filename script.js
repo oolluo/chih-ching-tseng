@@ -1,6 +1,6 @@
 const content = document.getElementById('content');
 
-loadContent('home.html', 'home-btn')
+loadContent('atm.html', 'atm-btn')
 
 function loadContent(page, pageID) {
     fetch(page)
