@@ -108,15 +108,25 @@ function initializeScreensaver() {
 // if it is mobile version, disable modal and create mute and unmute on click(tap)
 function unmuteAndMuteVideo() {
     const videos = document.querySelectorAll('.video');
+    const icons = document.querySelectorAll('.material-symbols-outlined')
 
-    videos.forEach((video) => {
+    videos.forEach((video, index) => {
+        const icon = icons[index];
         video.addEventListener('click', () => {
-            videos.forEach((v) => {
+            videos.forEach((v, i) => {
                 if (v !== video) {
                     v.muted = true;
+                    icons[i].textContent = 'volume_off';
                 }
             })
             video.muted = !video.muted;
+
+            if (video.muted) {
+                icon.textContent = 'volume_off';
+            } else {
+                icon.textContent = 'volume_up';
+            }
+            console.log(icon);
         })
     })
 }
