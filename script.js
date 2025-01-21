@@ -1,6 +1,7 @@
 const content = document.getElementById('content');
+const htmlEl = document.documentElement;
 
-loadContent('home.html', 'home-btn')
+loadContent('animations.html', 'animations-btn')
 
 function loadContent(page, pageID) {
     fetch(page)
@@ -9,9 +10,16 @@ function loadContent(page, pageID) {
         document.getElementById('content').innerHTML = html;
         window.scrollTo(0, 0);
         highlightNav(pageID);
-        initializeModal();
+        if (!isMobile()) {
+            initializeModal();
+        } else {
+            unmuteAndMuteVideo();
+        }
         if (page === 'home.html') {
             initializeScreensaver();
+            htmlEl.style.overflow = 'hidden';
+        } else {
+            htmlEl.style.overflow = 'auto';
         }
     })
 }
@@ -42,12 +50,6 @@ function initializeModal() {
         modalVideo.muted = false;
       });
     }
-
-    document.querySelector('.close').addEventListener('click', () => {
-        modal.style.display = 'none';
-        modalVideo.removeAttribute('src');
-        modalVideo.muted = true;
-    })
 
     modal.addEventListener('click', (e) => {
         if (e.target === modal || e.target === modalVideo) {
@@ -90,8 +92,37 @@ function initializeScreensaver() {
 
         requestAnimationFrame(moveText);
     }
-
+    function clickToRevealScreensaverText() {
+        const screensaverText = document.querySelector('.screensaver-text');
+        screensaverText.addEventListener('click', () => {
+            screensaverText.style.filter = 'blur(0px)';
+            screensaverText.style.cursor = 'default';
+            speedX = 3;
+            speedY = 3;
+        })
+    }
     moveText();
+    clickToRevealScreensaverText();
+}
+
+// if it is mobile version, disable modal and create mute and unmute on click(tap)
+function unmuteAndMuteVideo() {
+    const videos = document.querySelectorAll('.video');
+
+    videos.forEach((video) => {
+        video.addEventListener('click', () => {
+            videos.forEach((v) => {
+                if (v !== video) {
+                    v.muted = true;
+                }
+            })
+            video.muted = !video.muted;
+        })
+    })
+}
+
+function isMobile() {
+    return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || window.innerWidth <= 768;
 }
 
 function getRandomInt(Max) {
