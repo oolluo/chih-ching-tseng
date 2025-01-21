@@ -1,7 +1,7 @@
 const content = document.getElementById('content');
 const htmlEl = document.documentElement;
 
-loadContent('animations.html', 'animations-btn')
+loadContent('home.html', 'home-btn')
 
 function loadContent(page, pageID) {
     fetch(page)
