@@ -96,8 +96,8 @@ function initializeScreensaver() {
     function clickToRevealScreensaverText() {
         const screensaverText = document.querySelector('.screensaver-text');
         screensaverText.addEventListener('click', () => {
-            speedX = 3;
-            speedY = 3;
+            speedX = -speedX;
+            speedY = -speedY;
         })
     }
     moveText();
