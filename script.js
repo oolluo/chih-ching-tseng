@@ -1,7 +1,7 @@
 const content = document.getElementById('content');
 const htmlEl = document.documentElement;
 
-loadContent('home.html', 'home-btn')
+loadContent('animations.html', 'animations-btn')
 
 function loadContent(page, pageID) {
     fetch(page)
@@ -14,7 +14,7 @@ function loadContent(page, pageID) {
         if (!isMobile()) {
             initializeModal();
         } else {
-            unmuteAndMuteVideo();
+            videoMutedControl();
         }
         if (page === 'home.html') {
             initializeScreensaver();
@@ -107,9 +107,9 @@ function initializeScreensaver() {
 }
 
 // if it is mobile version, disable modal and create mute and unmute on click(tap)
-function unmuteAndMuteVideo() {
+function videoMutedControl() {
     const videos = document.querySelectorAll('.video');
-    const icons = document.querySelectorAll('.material-symbols-outlined')
+    const icons = document.querySelectorAll('.mute-icon')
 
     videos.forEach((video, index) => {
         const icon = icons[index];

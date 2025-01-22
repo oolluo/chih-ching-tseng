@@ -237,7 +237,7 @@ h1:hover, a:hover, a.active {
         display: block;
         position: fixed;
         right: 17px;
-        top: 5px;
+        top: 4px;
         font-size: 2rem;
         z-index: 2000;
         border: none;
