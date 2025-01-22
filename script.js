@@ -96,8 +96,6 @@ function initializeScreensaver() {
     function clickToRevealScreensaverText() {
         const screensaverText = document.querySelector('.screensaver-text');
         screensaverText.addEventListener('click', () => {
-            screensaverText.style.filter = 'blur(0px)';
-            screensaverText.style.cursor = 'default';
             speedX = 3;
             speedY = 3;
         })
