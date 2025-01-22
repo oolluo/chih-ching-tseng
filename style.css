@@ -175,7 +175,7 @@ h1:hover, a:hover, a.active {
     background: none;
 }
 
-/* icons */
+/* btn */
 .material-symbols-outlined {
     font-variation-settings:
     'FILL' 0,
@@ -184,7 +184,7 @@ h1:hover, a:hover, a.active {
     'opsz' 24
 }
 
-.mute-icon {
+.mute-btn {
     display: none;
     visibility: hidden;
     position: absolute;
@@ -280,9 +280,8 @@ h1:hover, a:hover, a.active {
         grid-template-columns: repeat(1, 1fr)
     }
 
-    .mute-icon {
+    .mute-btn {
         visibility: visible;
-        display: flex;
     }
       
     .gallery-item {

@@ -14,7 +14,7 @@ function loadContent(page, pageID) {
         if (!isMobile()) {
             initializeModal();
         } else {
-            videoMutedControl();
+            initializeGalleryMuteButtons();
         }
         if (page === 'home.html') {
             initializeScreensaver();
@@ -106,30 +106,35 @@ function initializeScreensaver() {
     clickToRevealScreensaverText();
 }
 
-// if it is mobile version, disable modal and create mute and unmute on click(tap)
-function videoMutedControl() {
-    const videos = document.querySelectorAll('.video');
-    const icons = document.querySelectorAll('.mute-icon')
+function initializeGalleryMuteButtons() {
+    const galleryItems = document.querySelectorAll('.gallery-item');
 
-    videos.forEach((video, index) => {
-        const icon = icons[index];
-        video.addEventListener('click', () => {
-            videos.forEach((v, i) => {
-                if (v !== video) {
-                    v.muted = true;
-                    icons[i].textContent = 'volume_off';
+    // if click on mute icon, it unmute
+    galleryItems.forEach((item) => {
+        const video = item.querySelector('.video'); // Finds the <video> in the current item.
+        const muteBtn = item.querySelector('.mute-btn'); // Finds the <button> in the current item.
+        
+        muteBtn.addEventListener('click', () => {
+            galleryItems.forEach((otherItem) => {
+                const otherVideo = otherItem.querySelector('.video');
+                const otherMuteBtn = otherItem.querySelector('.mute-btn');
+                if (otherVideo !== video) {
+                  otherVideo.muted = true;
+                  otherMuteBtn.textContent = 'volume_off';
                 }
-            })
+              });
+
+            // Toggle mute for the current video
             video.muted = !video.muted;
 
+            // Update button text/icon
             if (video.muted) {
-                icon.textContent = 'volume_off';
+                muteBtn.textContent = 'volume_off';
             } else {
-                icon.textContent = 'volume_up';
+                muteBtn.textContent = 'volume_up';
             }
-            console.log(icon);
         })
-    })
+    });
 }
 
 function lazyLoadVideos() {
