@@ -177,17 +177,20 @@ h1:hover, a:hover, a.active {
 
 /* icons */
 .material-symbols-outlined {
-    display: none;
-    visibility: hidden;
-    position: absolute;
-    right: 10px;
-    bottom: 10px;
-    background-color: transparent;
     font-variation-settings:
     'FILL' 0,
     'wght' 300,
     'GRAD' 0,
     'opsz' 24
+}
+
+.mute-icon {
+    display: none;
+    visibility: hidden;
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+    background-color: transparent;
 }
 
 /* Middle styles */
@@ -233,8 +236,8 @@ h1:hover, a:hover, a.active {
     .hamburger {
         display: block;
         position: fixed;
-        right: 20px;
-        top: 10px;
+        right: 17px;
+        top: 5px;
         font-size: 2rem;
         z-index: 2000;
         border: none;
@@ -277,14 +280,19 @@ h1:hover, a:hover, a.active {
         grid-template-columns: repeat(1, 1fr)
     }
 
-    .material-symbols-outlined {
+    .mute-icon {
         visibility: visible;
+        display: flex;
     }
       
     .gallery-item {
-        filter: blur(0px);
         transition: none;
         aspect-ratio: auto;
+        filter: blur(0px);
+    }
+
+    .gallery-item:hover {
+        filter: blur(0px)
     }
     
     .gallery-item .video {

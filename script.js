@@ -10,6 +10,7 @@ function loadContent(page, pageID) {
         document.getElementById('content').innerHTML = html;
         window.scrollTo(0, 0);
         highlightNav(pageID);
+        lazyLoadVideos();
         if (!isMobile()) {
             initializeModal();
         } else {
@@ -129,6 +130,30 @@ function unmuteAndMuteVideo() {
             console.log(icon);
         })
     })
+}
+
+function lazyLoadVideos() {
+    const videos = document.querySelectorAll('.video');
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1, // Start loading when 10% of the video is visible
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const video = entry.target;
+
+            if (entry.isIntersecting) {
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+    }, observerOptions);
+
+    videos.forEach((video) => observer.observe(video));
 }
 
 function isMobile() {
