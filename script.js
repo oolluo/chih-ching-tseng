@@ -10,6 +10,7 @@ function loadContent(page, pageID) {
         document.getElementById('content').innerHTML = html;
         window.scrollTo(0, 0);
         highlightNav(pageID);
+        lazyLoadVideos();
         if (!isMobile()) {
             initializeModal();
         } else {
