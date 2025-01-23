@@ -13,7 +13,6 @@ function loadContent(page, pageID) {
         if (!isMobile()) {
             initializeModal();
         } else {
-            lazyLoadVideos();
             initializeGalleryMuteButtons();
         }
         if (page === 'home.html') {
